@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react'
-import { FiSun, FiMoon } from '@react-icons/all-files/fi/FiSun'
+import { FiSun } from '@react-icons/all-files/fi/FiSun'
+import { FiMoon } from '@react-icons/all-files/fi/FiMoon'
 
 interface DarkModeToggleProps {
   className?: string

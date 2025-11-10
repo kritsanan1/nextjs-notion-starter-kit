@@ -29,6 +29,8 @@ import { NotionPageHeader } from './NotionPageHeader'
 import { Page404 } from './Page404'
 import { PageAside } from './PageAside'
 import { PageHead } from './PageHead'
+import { ReadingProgress } from './ReadingProgress'
+import { SocialShareButtons } from './SocialShareButtons'
 import styles from './styles.module.css'
 
 // -----------------------------------------------------------------------------
@@ -303,6 +305,16 @@ export function NotionPage({
       {isLiteMode && <BodyClassName className='notion-lite' />}
       {isDarkMode && <BodyClassName className='dark-mode' />}
 
+      {/* Reading Progress Indicator for blog posts */}
+      {isBlogPost && !isLiteMode && (
+        <ReadingProgress 
+          targetSelector=".notion-page-content"
+          height="3px"
+          color={isDarkMode ? '#60a5fa' : '#3b82f6'}
+          backgroundColor={isDarkMode ? '#1f2937' : '#e5e7eb'}
+        />
+      )}
+
       <NotionRenderer
         bodyClassName={cs(
           styles.notion,
@@ -327,6 +339,21 @@ export function NotionPage({
         pageAside={pageAside}
         footer={footer}
       />
+
+      {/* Social Share Buttons for blog posts */}
+      {isBlogPost && !isLiteMode && canonicalPageUrl && (
+        <div style={{ 
+          position: 'fixed', 
+          bottom: '20px', 
+          right: '20px', 
+          zIndex: 100 
+        }}>
+          <SocialShareButtons 
+            title={title}
+            url={canonicalPageUrl}
+          />
+        </div>
+      )}
 
       <GitHubShareButton />
     </>

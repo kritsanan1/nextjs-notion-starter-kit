@@ -1,11 +1,9 @@
 import { useState } from 'react'
-import { 
-  FiTwitter, 
-  FiFacebook, 
-  FiLinkedin, 
-  FiLink,
-  FiShare2 
-} from '@react-icons/all-files/fi'
+import { FiTwitter } from '@react-icons/all-files/fi/FiTwitter'
+import { FiFacebook } from '@react-icons/all-files/fi/FiFacebook'
+import { FiLinkedin } from '@react-icons/all-files/fi/FiLinkedin'
+import { FiLink } from '@react-icons/all-files/fi/FiLink'
+import { FiShare2 } from '@react-icons/all-files/fi/FiShare2'
 
 interface SocialShareButtonsProps {
   title: string

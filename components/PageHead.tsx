@@ -102,6 +102,28 @@ export function PageHead({
       <meta name='twitter:title' content={title} />
       <title>{title}</title>
 
+      {/* PWA Manifest */}
+      <link rel='manifest' href='/manifest.json' />
+      
+      {/* Apple Touch Icons */}
+      <link rel='apple-touch-icon' href='/apple-touch-icon.png' />
+      
+      {/* Additional SEO tags */}
+      <meta name='author' content={config.author} />
+      <meta name='language' content='en-US' />
+      
+      {/* Open Graph additional tags */}
+      <meta property='og:locale' content='en_US' />
+      {isBlogPost && <meta property='og:type' content='article' />}
+      
+      {/* Twitter additional tags */}
+      <meta name='twitter:site' content={config.twitter ? `@${config.twitter}` : undefined} />
+      
+      {/* Preconnect to external domains for better performance */}
+      <link rel='preconnect' href='https://www.notion.so' />
+      <link rel='preconnect' href='https://fonts.googleapis.com' />
+      <link rel='preconnect' href='https://fonts.gstatic.com' crossOrigin='anonymous' />
+
       {/* Better SEO for the blog posts */}
       {isBlogPost && (
         <script type='application/ld+json'>
@@ -116,9 +138,42 @@ export function PageHead({
             description,
             author: {
               '@type': 'Person',
+              name: config.author,
+              url: config.twitter ? `https://twitter.com/${config.twitter}` : undefined
+            },
+            publisher: {
+              '@type': 'Organization',
+              name: site?.name || config.author,
+              logo: {
+                '@type': 'ImageObject',
+                url: `${config.host}/favicon.ico`
+              }
+            },
+            image: socialImageUrl,
+            datePublished: new Date().toISOString(),
+            dateModified: new Date().toISOString()
+          })}
+        </script>
+      )}
+      
+      {/* Website Schema for homepage */}
+      {!isBlogPost && (
+        <script type='application/ld+json'>
+          {JSON.stringify({
+            '@context': 'https://schema.org',
+            '@type': 'WebSite',
+            name: site?.name || config.author,
+            description: site?.description || config.description,
+            url: config.host,
+            author: {
+              '@type': 'Person',
               name: config.author
             },
-            image: socialImageUrl
+            potentialAction: {
+              '@type': 'SearchAction',
+              target: `${config.host}/search?q={search_term_string}`,
+              'query-input': 'required name=search_term_string'
+            }
           })}
         </script>
       )}
