@@ -1,24 +1,35 @@
 {
   "name": "Next.js Notion Starter Kit",
-  "short_name": "Starter Kit",
+  "short_name": "Notion Blog",
+  "description": "Beautiful blog built with Next.js and Notion",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#000000",
+  "orientation": "portrait-primary",
   "icons": [
     {
-      "src": "/favicon.png",
-      "type": "image/png",
-      "sizes": "32x32"
+      "src": "/favicon-16x16.png",
+      "sizes": "16x16",
+      "type": "image/png"
     },
     {
-      "src": "/favicon-128x128.png",
-      "type": "image/png",
-      "sizes": "128x128"
+      "src": "/favicon-32x32.png",
+      "sizes": "32x32",
+      "type": "image/png"
     },
     {
-      "src": "/favicon-192x192.png",
-      "type": "image/png",
-      "sizes": "192x192"
+      "src": "/apple-touch-icon.png",
+      "sizes": "180x180",
+      "type": "image/png"
     }
   ],
-  "theme_color": "#000000",
-  "background_color": "#000000",
-  "display": "standalone"
+  "categories": ["blog", "portfolio", "education"],
+  "screenshots": [
+    {
+      "src": "/og-image.png",
+      "sizes": "1200x630",
+      "type": "image/png"
+    }
+  ]
 }
