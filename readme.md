@@ -18,6 +18,7 @@ It uses Notion as a CMS, [react-notion-x](https://github.com/NotionX/react-notio
 
 ## Features
 
+### Core Features
 - Setup only takes a few minutes ([single config file](./site.config.ts)) 💪
 - Robust support for Notion content via [react-notion-x](https://github.com/NotionX/react-notion-x)
 - Built using Next.js, TS, and React
@@ -30,6 +31,18 @@ It uses Notion as a CMS, [react-notion-x](https://github.com/NotionX/react-notio
 - Quick search via CMD+K / CMD+P
 - Responsive for different devices
 - Optimized for Next.js and Vercel
+
+### ✨ Enhanced Features (New!)
+- **PWA Support** - Progressive Web App with offline capabilities and service worker
+- **Reading Progress Indicator** - Visual progress bar for article reading
+- **Social Sharing Buttons** - Share to Twitter, Facebook, LinkedIn with one click
+- **Newsletter Subscription** - Built-in newsletter signup component
+- **Enhanced Mobile Navigation** - Improved mobile menu with smooth animations
+- **Advanced SEO** - Structured data (Schema.org), enhanced meta tags, and PWA manifest
+- **Multi-Analytics Support** - Google Analytics 4, PostHog, Fathom, Plausible
+- **Redis Caching** - Optional Redis support for preview image caching
+- **Custom Navigation** - Configurable navigation links
+- **Enhanced Image Optimization** - Support for additional image domains
 
 ## Demos
 
@@ -185,6 +198,64 @@ To enable, just add a `NEXT_PUBLIC_POSTHOG_ID` environment variable, which will 
 If you're using Redis, analytics, or any other feature which requires environment variables, then you'll need to [add them to your Vercel project](https://vercel.com/docs/concepts/projects/environment-variables).
 
 If you want to test your redis builds with GitHub Actions, then you'll need to edit the [default build action](./.github/workflows/build.yml) to add `REDIS_HOST` and `REDIS_PASSWORD`. Here is an [example from my personal branch](https://github.com/transitive-bullshit/nextjs-notion-starter-kit/blob/transitive-bullshit/.github/workflows/build.yml#L17-L21). You'll also need to add these environment variables to your GitHub repo as [repository secrets](https://docs.github.com/en/actions/security-guides/encrypted-secrets).
+
+## Enhanced Features Guide
+
+For detailed information about the new features and how to use them, see the [Implementation Guide](./IMPLEMENTATION_GUIDE.md) and [Implementation Summary](./IMPLEMENTATION_SUMMARY.md).
+
+### New Components
+
+#### Reading Progress Indicator
+Shows a visual progress bar at the top of article pages as users scroll through content. Automatically enabled for blog posts.
+
+#### Social Sharing Buttons
+Floating share buttons that allow readers to easily share content on social media platforms (Twitter, Facebook, LinkedIn) or copy the link. Features native Web Share API support on mobile devices.
+
+#### Newsletter Subscription
+A beautifully designed newsletter subscription form with support for multiple email service providers:
+- Mailchimp
+- ConvertKit
+- Buttondown
+- Custom implementations
+
+See [`pages/api/subscribe.ts`](./pages/api/subscribe.ts) for integration details.
+
+#### Mobile Menu
+Enhanced mobile navigation with smooth animations and better UX. Includes home, search, and custom navigation links.
+
+#### Dark Mode Toggle
+Modern dark mode component with system preference detection and smooth transitions (already integrated in footer).
+
+### PWA Configuration
+
+This site now functions as a Progressive Web App with:
+- Offline support via service worker
+- Install prompt on mobile devices
+- Optimized caching strategies for fonts and Notion API
+- Web app manifest for better mobile experience
+
+### Advanced SEO
+
+Enhanced SEO features include:
+- Structured data (Schema.org) for articles and website
+- Enhanced Open Graph and Twitter Card meta tags
+- PWA manifest integration
+- Improved image preloading
+- Better canonical URLs
+
+### Analytics Integration
+
+The starter kit now supports multiple analytics providers:
+- **Google Analytics 4** - `NEXT_PUBLIC_GA_ID`
+- **PostHog** - `NEXT_PUBLIC_POSTHOG_ID`  
+- **Fathom** - `NEXT_PUBLIC_FATHOM_ID`
+- **Plausible** - `NEXT_PUBLIC_PLAUSIBLE_DOMAIN`
+
+See [`lib/analytics.ts`](./lib/analytics.ts) for custom event tracking.
+
+### Configuration
+
+All new features can be configured via environment variables. See [`.env.example`](./.env.example) for a comprehensive list of available options.
 
 ## Contributing
 
